@@ -26,7 +26,7 @@ gulp.task('scss', function () {
     .pipe(concat(config.output.cssName))
     .pipe(autoprefixer())
     .pipe(gulpIf(config.isDevelop, sourcemaps.write()))
-    .pipe(gulpIf(config.isDevelop, cleanCss()))
+    .pipe(gulpIf(!config.isDevelop, cleanCss()))
     .pipe(gulp.dest(config.output.path))
     .pipe(browserSync.stream());
 });
